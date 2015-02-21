@@ -1,4 +1,5 @@
 class PrestationsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_prestation, only: [:show, :edit, :update, :destroy]
 
   # GET /prestations
