@@ -1,54 +1,65 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>
+  <%= @prestation.libelle %> <small>dans le dossier <%= link_to @prestation.matter.name, matter_path(@prestation.matter) %> </small>
+  <%= link_to 'Modifier la prestation', edit_prestation_path(@prestation), :class => "btn btn-info pull-right" %>
+</h1>
+<hr>
 
-<p>
-  <strong>Matter:</strong>
-  <%= @prestation.matter_id %>
-</p>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4 class="text-right">Date & code</h4>
+        <hr>
+    <p>Date : <%= @prestation.prestation_date %>
+      <p>Code : <%= @prestation.code %>
+      <p>Type :
+        <% if @prestation.expense == true %>
+          Frais & débours
+        <% else %>
+          Honoraires
+        <% end %>
 
-<p>
-  <strong>Prestation date:</strong>
-  <%= @prestation.prestation_date %>
-</p>
+      
+        </p>
+</div>
+</div>
+  </div>
 
-<p>
-  <strong>Details:</strong>
-  <%= @prestation.details %>
-</p>
+<div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4 class="text-right">Objet</h4>
+        <hr>
+        <p>Libellé : <%= @prestation.libelle %></p>
+    <p>Détail : <%= @prestation.details %></p>
+</div>
+</div>
+  </div>
 
-<p>
-  <strong>Rate:</strong>
-  <%= @prestation.rate %>
-</p>
+<div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4 class="text-right">Prix</h4>
+        <hr>
+        <p>
+          <% if @prestation.fixed_price == true %>
+          Forfait : <%= @prestation.rate %> €
+          <% else %>
+          Taux : <%= @prestation.rate %> € <small>/ <%= @prestation.rate_unit %> </small>
+          <br>Nombre de <%= @prestation.rate_unit %>s : <%= @prestation.amount %>
+          <% end %>
+        </p>
+        <p class="text-right"><b><i>Prix : <%= @prestation.price %> €</i></b>
+          
+        </p>
 
-<p>
-  <strong>Fixed price:</strong>
-  <%= @prestation.fixed_price %>
-</p>
+          
+</div>
+</div>
+  </div>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @prestation.amount %>
-</p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @prestation.code %>
-</p>
 
-<p>
-  <strong>Libelle:</strong>
-  <%= @prestation.libelle %>
-</p>
 
-<p>
-  <strong>Rate unit:</strong>
-  <%= @prestation.rate_unit %>
-</p>
 
-<p>
-  <strong>Expense:</strong>
-  <%= @prestation.expense %>
-</p>
-
-<%= link_to 'Edit', edit_prestation_path(@prestation) %> |
-<%= link_to 'Back', prestations_path %>

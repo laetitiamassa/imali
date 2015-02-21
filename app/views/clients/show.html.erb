@@ -1,36 +1,39 @@
-
+<div class="container">
 
 <h1>
   <%= @client.first_name %> <%= @client.last_name %>
   <%= link_to 'Modifier le profil client', edit_client_path(@client), :class => "btn btn-info pull-right" %>
 </h1>
+<hr>
   
 <div class="row">
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-body">
-    <h4><%= @client.civil_status %>
-      <br>Née le <%= @client.birth_date %> à <%= @client.birth_place %>
-  <br><%= @client.profession %>
-  <br><%= @client.revenues %> € annuels
+        <h4 class="text-right">Profil</h4>
+        <hr>
+    <p><%= @client.civil_status %>
+      | Né(e) le <%= @client.birth_date %> à <%= @client.birth_place %></p>
+  <p><%= @client.profession %>
+  | <%= @client.revenues %> € par mois</p>
   
-</h4>
+
 </div>
 </div>
   </div>
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h4>Coordonnées personnelles</h4>
+        <h4 class="text-right">Coordonnées personnelles</h4>
         <hr>
-        <%= @client.home_street %> 
+        <p><%= @client.home_street %> 
         <%= @client.home_number %> 
         <%= @client.home_postcode %>
-         <%= @client.home_city %>
+         <%= @client.home_city %></p>
          
-         tel : <%= @client.home_tel %>
+         <p>tel : <%= @client.home_tel %>
          | fax : <%= @client.home_fax %>
-         | mobile : <%= @client.home_mobile %>
+         | mobile : <%= @client.home_mobile %></p>
 
 
       </div>
@@ -40,37 +43,63 @@
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-body">
-        Coordonnées professionnelles
-        <%= @client.office_street %>
+        <h4 class="text-right">Coordonnées professionnelles</h4>
+        <hr>
+        <p><%= @client.office_street %>
         <%= @client.office_number %>
         <%= @client.office_postcode %>
-        <%= @client.office_city %>
-        <br>tel : <%= @client.office_tel %> |
+        <%= @client.office_city %></p>
+        <p>tel : <%= @client.office_tel %> |
         fax : <%= @client.office_fax %> |
-        mobile : <%= @client.office_mobile %>
+        mobile : <%= @client.office_mobile %></p>
       </div>
     </div>
   </div>
 </div>
 
 <hr>
-<h3>Dossiers de <%= @client.first_name %> <%= @client.last_name %></h3>
-<div class="panel panel-default">
+<div class="row">
+  <div class="panel panel-default">
       <div class="panel-body">
+
+  <div class="col-md-4">
+<h4 class="page-header text-right">Dossiers</h4>
+
 <% @client.matters.each do |matter| %>
 <p><%= link_to matter.name, matter_path(matter) %></p>
+<hr>
 <% end %>
 </div>
-</div>
-<hr>
-<h3>Factures de <%= @client.first_name %> <%= @client.last_name %></h3>
-<div class="panel panel-default">
-      <div class="panel-body">
+
+  <div class="col-md-4">
+<h4 class="page-header text-right">Factures</h4>
+
 <% @client.matters.each do |matter| %>
   <% matter.invoices.each do |invoice| %>
-<p><%= link_to invoice.invoice_date, invoice_path(invoice) %></p>
+<p><%= link_to invoice.invoice_date, invoice_path(invoice) %>
+  <small> (pour le dossier <%= matter.name %>)</small>
+</p>
+<hr>
+  <% end %>
+<% end %>
+
+</div>
+
+
+  <div class="col-md-4">
+<h4 class="page-header text-right">Paiements</h4>
+
+<% @client.matters.each do |matter| %>
+  <% matter.payments.each do |payment| %>
+<p><%= link_to payment.amount, payment_path(payment) %> €
+  <small>(<%= payment.reception_date %> | pour le dossier <%= payment.matter.name %>)</small>
+</p>
+<hr>
   <% end %>
 <% end %>
 </div>
+</div>
+
+
 </div>
 
