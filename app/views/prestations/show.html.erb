@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Matter:</strong>
+  <%= @prestation.matter_id %>
+</p>
+
+<p>
+  <strong>Prestation date:</strong>
+  <%= @prestation.prestation_date %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @prestation.details %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @prestation.rate %>
+</p>
+
+<p>
+  <strong>Fixed price:</strong>
+  <%= @prestation.fixed_price %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @prestation.amount %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @prestation.code %>
+</p>
+
+<p>
+  <strong>Libelle:</strong>
+  <%= @prestation.libelle %>
+</p>
+
+<p>
+  <strong>Rate unit:</strong>
+  <%= @prestation.rate_unit %>
+</p>
+
+<p>
+  <strong>Expense:</strong>
+  <%= @prestation.expense %>
+</p>
+
+<%= link_to 'Edit', edit_prestation_path(@prestation) %> |
+<%= link_to 'Back', prestations_path %>

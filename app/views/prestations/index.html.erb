@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Mes prestations
+  <small><%= link_to "Prestations par dossier", "", :class => "btn btn-default btn-sm" %></small>
+  <%= link_to 'Ajouter une nouvelle prestation', new_prestation_path, :class => "btn btn-info pull-right" %>
+</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Dossier</th>
+      <th>Code</th>
+      <th>Date</th>
+      <th>Libellé</th>
+      <th>Détail de la prestation</th>
+      <th>Frais ?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prestations.each do |prestation| %>
+      <tr>
+        <td><b><%= prestation.matter.name %></b></td>
+        <td><%= prestation.code %></td>
+        <td><%= prestation.prestation_date %></td>
+        <td><%= prestation.libelle %></td>
+        <td><%= prestation.details %></td>
+        <td><%= prestation.expense %></td>
+        <td><%= link_to 'Voir', prestation, :class => "btn btn-default btn-sm" %>
+        <%= link_to 'Modifier', edit_prestation_path(prestation), :class => "btn btn-default btn-sm" %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

@@ -1,2 +1,31 @@
-<h3>Welcome</h3>
-<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<div class="text-center">
+	<div class="jumbotron">
+	<h1>Bienvenue dans imali !
+	<br><small>Encodez aisément vos prestations, 
+	<br>Gardez l'oeil avisé sur vos dossiers, clients et factures</small></h1>
+</div>
+
+
+
+
+<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
+	Ajouter une nouvelle prestation
+	</button>
+<%= render "modal" %>
+<br>
+<br>
+<div class="row">
+	
+	<%= link_to "Nouveau client", new_client_path, :class => "btn btn-default btn-info" %>
+
+	<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalMatter">
+		Nouveau dossier
+	</button>
+
+	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalPayment">
+		Nouveau paiement
+	</button>
+
+
+</div>
+</div>

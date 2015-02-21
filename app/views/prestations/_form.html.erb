@@ -1,0 +1,23 @@
+<%= simple_form_for(@prestation) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+   
+    <%= f.input :prestation_date, label: "Date" %>
+    <%= f.input :code, label: "Code" %>
+    <%= f.input :libelle, label: "Libellé" %>
+    <%= f.input :details, label: "Détail" %>
+    <hr>
+    
+    <%= f.input :rate, label: "Taux" %>
+    <%= f.input :rate_unit, label: "Unité" %>
+    
+    <%= f.input :amount, label: "Nombre d'unités" %>
+    <%= f.input :fixed_price, label: "Forfait ?" %>
+    <%= f.input :expense, label: "Ce sont des frais ?" %>  
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Ajouter la prestation au dossier", :class => "btn btn-default" %>
+  </div>
+<% end %>

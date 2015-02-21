@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Mes factures
+<small><%= link_to "Factures par dossier", "", :class => "btn btn-default btn-sm" %></small>
+<%= link_to 'Ajouter une nouvelle facture', new_invoice_path, :class => "btn btn-info pull-right" %>
+</h1>
+
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Dossier</th>
+      <th>Client</th>
+      <th>Numéro</th>
+      <th>Date de facturation</th>
+      <th>Date d'exigibilité</th>
+      <th>Montant total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><b><%= invoice.matter.name %></b></td>
+        <td><b><%= invoice.matter.client.last_name %></b></td>
+        <td><%= invoice.invoice_number %></td>
+        <td><%= invoice.invoice_date %></td>
+        <td><%= invoice.invoice_duedate %></td>
+        <td>4000 €</td>
+        <td><%= link_to 'Voir', invoice, :class => "btn btn-default btn-sm" %>
+          <%= link_to 'Modifier', edit_invoice_path(invoice), :class => "btn btn-default btn-sm" %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

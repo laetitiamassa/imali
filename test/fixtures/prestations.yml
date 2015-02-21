@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matter_id: 1
+  prestation_date: 2015-02-20 19:31:45
+  details: MyText
+  rate: 1
+  fixed_price: false
+  amount: 1
+  code: MyString
+  libelle: MyString
+  rate_unit: MyString
+  expense: false
+
+two:
+  matter_id: 1
+  prestation_date: 2015-02-20 19:31:45
+  details: MyText
+  rate: 1
+  fixed_price: false
+  amount: 1
+  code: MyString
+  libelle: MyString
+  rate_unit: MyString
+  expense: false

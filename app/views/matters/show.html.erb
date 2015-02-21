@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @matter.client_id %>
+</p>
+
+<p>
+  <strong>Opening date:</strong>
+  <%= @matter.opening_date %>
+</p>
+
+<p>
+  <strong>Closing date:</strong>
+  <%= @matter.closing_date %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @matter.description %>
+</p>
+
+<p>
+  <strong>Stage:</strong>
+  <%= @matter.stage %>
+</p>
+
+<p>
+  <strong>Jurisdiction:</strong>
+  <%= @matter.jurisdiction %>
+</p>
+
+<p>
+  <strong>Matter value:</strong>
+  <%= @matter.matter_value %>
+</p>
+
+<%= link_to 'Edit', edit_matter_path(@matter) %> |
+<%= link_to 'Back', matters_path %>
+
+
+Ajouter une prestation
+<%= simple_form_for(@prestation) do |f| %>
+<%= f.hidden_field :matter_id, :value => @matter.id %>
+<div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+Ajouter une facture
+<%= simple_form_for(@invoice) do |f| %>
+<%= f.hidden_field :matter_id, :value => @matter.id %>
+<div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
+Ajouter un paiement
+<%= simple_form_for(@payment) do |f| %>
+<%= f.hidden_field :matter_id, :value => @matter.id %>
+<div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Mes dossiers
+  <small><%= link_to "Dossiers par client", "", :class => "btn btn-default btn-sm" %></small>
+  <%= link_to 'Ajouter un nouveau dossier', new_matter_path, :class => "btn btn-info pull-right" %>
+</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Nom</th>
+      <th>Ouverture</th>
+      <th>Clôture</th>
+      <th>Description</th>
+      <th>Stade</th>
+      <th>Juridiction</th>
+      <th>Valeur</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matters.each do |matter| %>
+      <tr>
+        <td><b><%= matter.client.last_name %></b></td>
+        <td><b><%= matter.name %></b></td>
+        <td><%= matter.opening_date %></td>
+        <td><%= matter.closing_date %></td>
+        <td><%= matter.description %></td>
+        <td><%= matter.stage %></td>
+        <td><%= matter.jurisdiction %></td>
+        <td><%= matter.matter_value %> €</td>
+        <td><%= link_to 'Voir', matter_path(matter), :class => "btn btn-default btn-sm" %>
+        <%= link_to 'Modifier', edit_matter_path(matter), :class => "btn btn-default btn-sm" %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

@@ -1,0 +1,40 @@
+<%= simple_form_for(@client) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <p class="lead text-right">Personne</p>
+    <%= f.input :first_name, label: "Prénom" %>
+    <%= f.input :last_name, label: "Nom" %>
+    <%= f.input :birth_date, label: "Date de naissance" %>
+    <%= f.input :birth_place, label: "Lieu de naissance" %>
+    <%= f.input :civil_status, label: "Statut civil" %>
+   
+    <p class="lead text-right">Activité</p>
+    <%= f.input :profession, label: "Profession" %>
+    <%= f.input :revenues, label: "Revenus (mensuels)" %>
+    
+    <p class="lead text-right">Domicile</p>
+    <%= f.input :home_street, label: "rue" %>
+    <%= f.input :home_number, label: "n°" %>
+    <%= f.input :home_postcode, label: "code postal" %>
+    <%= f.input :home_city, label: "ville" %>
+    <%= f.input :home_tel, label: "téléphone" %>
+    <%= f.input :home_fax, label: "fax" %>
+    <%= f.input :home_mobile, label: "mobile" %>
+    
+    <p class="lead text-right">Bureau</p>
+    <%= f.input :office_street, label: "rue" %>
+    <%= f.input :office_number, label: "n°" %>
+    <%= f.input :office_postcode, label: "code postal" %>
+    <%= f.input :office_city, label: "ville" %>
+    <%= f.input :office_tel, label: "téléphone" %>
+    <%= f.input :office_fax, label: "fax"%>
+    <%= f.input :office_mobile, label: "mobile" %>
+    
+    
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Ajouter à mes clients" %>
+  </div>
+<% end %>

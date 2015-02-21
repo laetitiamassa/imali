@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matter_id: 1
+  amount: 1
+  reception_date: 2015-02-20
+  comment: MyText
+
+two:
+  matter_id: 1
+  amount: 1
+  reception_date: 2015-02-20
+  comment: MyText

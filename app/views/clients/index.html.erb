@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Mes clients
+  <%= link_to 'Ajouter un nouveau client', new_client_path, :class => "btn btn-info pull-right" %>
+</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Téléphone privé</th>
+      <th>GSM privé</th>
+      <th>Profession</th>
+      <th>Revenus</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><b><%= client.first_name %></b></td>
+        <td><b><%= client.last_name %></b></td>
+        <td><%= client.home_tel %></td>
+        <td><%= client.home_mobile %></td>
+        <td><%= client.profession %></td>
+        <td><%= client.revenues %></td>
+        <td><%= link_to 'Voir', client, :class => "btn btn-default btn-sm" %> 
+        <%= link_to 'Modifier', edit_client_path(client), :class => "btn btn-default btn-sm" %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

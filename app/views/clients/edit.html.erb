@@ -1,0 +1,8 @@
+<h1>Modifier les données de <%= @client.first_name %> <%= @client.last_name %></h1>
+
+<div class="authform">
+<%= render 'form' %>
+</div>
+
+<%= link_to 'Show', @client %> |
+<%= link_to 'Back', clients_path %>

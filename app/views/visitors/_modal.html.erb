@@ -1,0 +1,78 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Choisissez le dossier</h4>
+      </div>
+      <div class="modal-body">
+        <p>Dans quel dossier ajouter cette prestation ?</p>
+        <% @matters.each do |matter| %>
+        	<%= simple_form_for(@prestation) do |f| %>
+				<%= f.hidden_field :matter_id, :value => matter.id %>
+				<p><div class="form-actions">
+				    <%= f.button :submit, "#{matter.name}" %>
+				</div></p>
+			<% end %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="myModalMatter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Sélectionnez le client</h4>
+      </div>
+      <div class="modal-body">
+        <p>Pour quel client souhaitez-vous ajouter ce dossier ?</p>
+        <% @clients.each do |client| %>
+        	<%= simple_form_for(@matter) do |f| %>
+				<%= f.hidden_field :client_id, :value => client.id %>
+				<p><div class="form-actions">
+				    <%= f.button :submit, "#{client.first_name} #{client.last_name}" %>
+				</div></p>
+			<% end %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="myModalPayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Choisissez le dossier</h4>
+      </div>
+      <div class="modal-body">
+        <p>Dans quel dossier avez-vous reçu ce paiement ?</p>
+        <% @matters.each do |matter| %>
+        	<%= simple_form_for(@payment) do |f| %>
+				<%= f.hidden_field :matter_id, :value => matter.id %>
+				<p><div class="form-actions">
+				    <%= f.button :submit, "#{matter.name}" %>
+				</div></p>
+			<% end %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

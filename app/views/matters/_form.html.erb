@@ -1,0 +1,19 @@
+<div class="authform">
+  <%= simple_form_for(@matter) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label: "Nom du dossier" %>
+    <%= f.input :opening_date, label: "Date d'ouverture" %>
+    <%= f.input :closing_date, label: "Date de clôture" %>
+    <%= f.input :description, label: "Description" %>
+    <%= f.input :stage, label: "Stade du dossier" %>
+    <%= f.input :jurisdiction, label: "Juridiction" %>
+    <%= f.input :matter_value, label: "Valeur du dossier" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Ajouter le dossier client", :class => "btn btn-default" %>
+  </div>
+<% end %>
+</div>

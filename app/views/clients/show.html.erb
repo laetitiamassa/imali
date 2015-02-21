@@ -1,0 +1,76 @@
+
+
+<h1>
+  <%= @client.first_name %> <%= @client.last_name %>
+  <%= link_to 'Modifier le profil client', edit_client_path(@client), :class => "btn btn-info pull-right" %>
+</h1>
+  
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+    <h4><%= @client.civil_status %>
+      <br>Née le <%= @client.birth_date %> à <%= @client.birth_place %>
+  <br><%= @client.profession %>
+  <br><%= @client.revenues %> € annuels
+  
+</h4>
+</div>
+</div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4>Coordonnées personnelles</h4>
+        <hr>
+        <%= @client.home_street %> 
+        <%= @client.home_number %> 
+        <%= @client.home_postcode %>
+         <%= @client.home_city %>
+         
+         tel : <%= @client.home_tel %>
+         | fax : <%= @client.home_fax %>
+         | mobile : <%= @client.home_mobile %>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Coordonnées professionnelles
+        <%= @client.office_street %>
+        <%= @client.office_number %>
+        <%= @client.office_postcode %>
+        <%= @client.office_city %>
+        <br>tel : <%= @client.office_tel %> |
+        fax : <%= @client.office_fax %> |
+        mobile : <%= @client.office_mobile %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+<h3>Dossiers de <%= @client.first_name %> <%= @client.last_name %></h3>
+<div class="panel panel-default">
+      <div class="panel-body">
+<% @client.matters.each do |matter| %>
+<p><%= link_to matter.name, matter_path(matter) %></p>
+<% end %>
+</div>
+</div>
+<hr>
+<h3>Factures de <%= @client.first_name %> <%= @client.last_name %></h3>
+<div class="panel panel-default">
+      <div class="panel-body">
+<% @client.matters.each do |matter| %>
+  <% matter.invoices.each do |invoice| %>
+<p><%= link_to invoice.invoice_date, invoice_path(invoice) %></p>
+  <% end %>
+<% end %>
+</div>
+</div>
+
