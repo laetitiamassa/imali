@@ -1,24 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>
+  Facture n°<%= @invoice.invoice_number %> <small>dans le dossier <%= link_to @invoice.matter.name, matter_path(@invoice.matter) %> </small>
+  <%= link_to 'Modifier la facture', edit_invoice_path(@invoice), :class => "btn btn-info pull-right" %>
+</h1>
+<hr>
+<p class="lead">Date d'émission : <%= @invoice.invoice_date %>
+<br>Date limite de paiement : <%= @invoice.invoice_duedate %></p>
+<hr>
 
-<p>
-  <strong>Matter:</strong>
-  <%= @invoice.matter_id %>
-</p>
 
-<p>
-  <strong>Invoice number:</strong>
-  <%= @invoice.invoice_number %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4 class="text-right">Prestations incluses</h4>
+        <hr>
+        
 
-<p>
-  <strong>Invoice date:</strong>
-  <%= @invoice.invoice_date %>
-</p>
 
-<p>
-  <strong>Invoice duedate:</strong>
-  <%= @invoice.invoice_duedate %>
-</p>
 
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+
+<hr>
+</div>
+</div>
+</div>
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4 class="text-right">Autres prestations du dossier</h4>
+        <hr>
+        
+
+</div>
+</div>
+</div>
+</div>
+
+<%= link_to "Version pdf", invoice_path(format: 'pdf') %>
+
+
+

@@ -11,6 +11,14 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   # GET /invoices/1.json
   def show
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "Facture #{@invoice.invoice_number}", :layout => 'pdf.html.erb'
+      end
+    end
+
   end
 
   # GET /invoices/new

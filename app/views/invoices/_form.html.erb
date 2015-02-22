@@ -1,4 +1,5 @@
-<%= simple_form_for(@invoice) do |f| %>
+<div class="authform">
+  <%= simple_form_for(@invoice) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -11,4 +12,6 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+
 <% end %>
+</div>
