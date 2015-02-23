@@ -63,6 +63,34 @@ class PrestationsController < ApplicationController
     end
   end
 
+  def follow
+    @prestation = Prestation.find(params[:format])
+    @invoice = Invoice.find(params[:id])
+    @prestation.follow(@invoice)
+    redirect_to :back
+  end
+
+  def unfollow
+    @invoice = Invoice.find(params[:format])
+    @prestation = Prestation.find(params[:id])
+    @prestation.stop_following(@invoice)
+    redirect_to :back
+  end
+
+  def invoice_follow
+    @invoice = Invoice.find(params[:format])
+    @prestation = Prestation.find(params[:id])
+    @invoice.follow(@prestation)
+    redirect_to :back
+  end
+
+  def invoice_unfollow
+    @invoice = Invoice.find(params[:format])
+    @prestation = Prestation.find(params[:id])
+    @invoice.stop_following(@prestation)
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_prestation

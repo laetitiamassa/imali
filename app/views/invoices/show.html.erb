@@ -1,9 +1,12 @@
 <div class="container">
   <h1>
   Facture n°<%= @invoice.invoice_number %> <small>dans le dossier <%= link_to @invoice.matter.name, matter_path(@invoice.matter) %> </small>
+
+
   <%= link_to 'Modifier la facture', edit_invoice_path(@invoice), :class => "btn btn-info pull-right" %>
 </h1>
 <hr>
+<%= link_to "Générer la facture", invoice_path(format: 'pdf'), :class => "btn btn-success btn-lg pull-right" %>
 <p class="lead">Date d'émission : <%= @invoice.invoice_date %>
 <br>Date limite de paiement : <%= @invoice.invoice_duedate %></p>
 <hr>
@@ -13,9 +16,15 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h4 class="text-right">Prestations incluses</h4>
-        <hr>
-        
+        <h4 class="text-right">Prestations incluses <%= ": #{@invoice.all_billed} EUR" %> </h4>
+          
+          <% @invoice.matter.prestations.each do |prestation| %>
+          <% if @invoice.following?(prestation) %>
+         <hr>
+        <%= prestation.prestation_date %> : <%= prestation.libelle %> - <%= prestation.details %> | <%= "#{prestation.price} €" if prestation.rate %>
+        <%= link_to "x", invoice_unfollow_prestation_path(prestation, @invoice), class: "btn btn-danger btn-sm pull-right" %>
+        <% end %>
+        <% end %>
 
 
 
@@ -28,16 +37,31 @@
 <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h4 class="text-right">Autres prestations du dossier</h4>
-        <hr>
+        <h4 class="text-right">Autres prestations du dossier <%= ": #{@invoice.all_non_billed} EUR" %></h4>
         
+        <% @invoice.matter.prestations.each do |prestation| %>
+        <% unless @invoice.following?(prestation) %>
+         <hr>
+        <%= prestation.prestation_date %> : <%= prestation.libelle %> - <%= prestation.details %> | <%= "#{prestation.price} €" if prestation.rate %>
+          <%= link_to "Facturer", invoice_follow_prestation_path(prestation, @invoice), class: "btn btn-success btn-sm pull-right" %>  
+        <% end %>
+    
+    
+        
+      
+       
+        <% end %>
 
 </div>
 </div>
 </div>
 </div>
 
-<%= link_to "Version pdf", invoice_path(format: 'pdf') %>
+
+
+
+      
+
 
 
 

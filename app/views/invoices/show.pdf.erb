@@ -1,1 +1,37 @@
-<%= @invoice.invoice_number %>
+<h4>
+	Ngalula Kayiba
+	<small>
+	<br>Avocat au barreau de Bruxelles
+	<hr>
+	<br>avenue Louise 515, bte 24
+	<br>1050 Bruxelles
+	<br>Tel : +32 (0)2 647 61 98
+	<br>Fax : +32 (0)2 644 66 95
+	<br>Email : k.ngalula@avocat.be
+	<br>TVA BE 0816 419 603
+	<br>IBAN : BE78 6300 2434 0086
+	<br>BIC : BBRUBEBB
+	</small>
+</h4>
+<hr>
+
+<p class="text-right"><%= @invoice.invoice_date %></p>
+<h1>Facture no <%= @invoice.invoice_number %></h1>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-5">
+		A <%= @invoice.matter.client.first_name %> <%= @invoice.matter.client.last_name %>	
+	</div>
+	</div>
+Ouverture du dossier : <%= @invoice.matter.opening_date %>
+Objet : <%= @invoice.matter.description %>
+<hr>
+<p>Prestations</p>
+<% @invoice.matter.prestations.each do |prestation| %>
+          <% if @invoice.following?(prestation) %>
+         <p>
+        <%= prestation.prestation_date %> : <%= prestation.libelle %> - <%= prestation.details %> | <%= "#{prestation.price} €" if prestation.rate %></p>
+        
+        <% end %>
+        <% end %>
+
