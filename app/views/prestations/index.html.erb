@@ -3,7 +3,11 @@
 <h1 class="page-header">Mes prestations
   <!-- <small><%= link_to "Prestations par dossier", "", :class => "btn btn-default btn-sm" %></small>
   <%= link_to 'Ajouter une nouvelle prestation', new_prestation_path, :class => "btn btn-info pull-right" %> -->
+<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal">
+    Ajouter une nouvelle prestation
+  </button>
 </h1>
+<%= render "visitors/modal" %>
 
 <table class="table table-hover">
   <thead>
@@ -20,6 +24,7 @@
 
   <tbody>
     <% @prestations.each do |prestation| %>
+    <% if current_user == prestation.matter.client.user %>
       <tr>
         <td><b><%= prestation.matter.name %></b></td>
         <td><%= prestation.code %></td>
@@ -31,6 +36,7 @@
         <%= link_to 'Modifier', edit_prestation_path(prestation), :class => "btn btn-default btn-sm" %></td>
         
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>

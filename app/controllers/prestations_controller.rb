@@ -6,6 +6,16 @@ class PrestationsController < ApplicationController
   # GET /prestations.json
   def index
     @prestations = Prestation.order("prestation_date DESC")
+    @prestation = Prestation.new
+
+    @matters = Matter.all
+    @matter = Matter.new
+
+    @invoices = Invoice.all
+    @invoice = Invoice.new
+
+    @payments = Payment.all
+    @payment = Payment.new
   end
 
   # GET /prestations/1

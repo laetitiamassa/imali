@@ -3,7 +3,11 @@
 <h1 class="page-header">Mes factures
 <!-- <small><%= link_to "Factures par dossier", "", :class => "btn btn-default btn-sm" %></small>
 <%= link_to 'Ajouter une nouvelle facture', new_invoice_path, :class => "btn btn-info pull-right" %> -->
+<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModalInvoice">
+    Ajouter une nouvelle facture
+  </button>
 </h1>
+<%= render "visitors/modal" %>
 
 
 
@@ -22,6 +26,7 @@
 
   <tbody>
     <% @invoices.each do |invoice| %>
+    <% if current_user == invoice.matter.client.user %>
       <tr>
         <td><b><%= invoice.matter.name %></b></td>
         <td><b><%= invoice.matter.client.last_name %></b></td>
@@ -33,6 +38,7 @@
           <%= link_to 'Modifier', edit_invoice_path(invoice), :class => "btn btn-default btn-sm" %></td>
         
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

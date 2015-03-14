@@ -5,17 +5,28 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = current_user.clients
   end
 
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @invoices = Invoice.all
+    @invoice = Invoice.new
+
+    @matters = @client.matters
+    @matter = Matter.new
+
+    @payment = Payment.all
+    @payment = Payment.new
+
+    @prestations = Prestation.all
+    @prestation = Prestation.new
   end
 
   # GET /clients/new
   def new
-    @client = Client.new
+    @client = current_user.clients.build
   end
 
   # GET /clients/1/edit
@@ -25,7 +36,7 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(client_params)
+    @client = current_user.clients.build(client_params)
 
     respond_to do |format|
       if @client.save

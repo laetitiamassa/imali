@@ -2,6 +2,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -79,4 +81,12 @@ section {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-xs;
+}
+
+.bodybg {
+  background-color: #F2F1EF;
+}
+
+.navbarbg {
+  background-color: #F2F1EF;
 }

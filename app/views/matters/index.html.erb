@@ -3,7 +3,11 @@
 <h1 class="page-header">Mes dossiers
   <!-- <small><%= link_to "Dossiers par client", "", :class => "btn btn-default btn-sm" %></small>
   <%= link_to 'Ajouter un nouveau dossier', new_matter_path, :class => "btn btn-info pull-right" %> -->
+  <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModalMatter">
+    Ajouter un nouveau dossier
+  </button>
 </h1>
+<%= render "visitors/modal" %>
 
 <table class="table table-hover">
   <thead>
@@ -21,7 +25,9 @@
   </thead>
 
   <tbody>
+
     <% @matters.each do |matter| %>
+    <% if current_user == matter.client.user %>
       <tr>
         <td><b><%= matter.client.last_name %></b></td>
         <td><b><%= matter.name %></b></td>
@@ -35,6 +41,7 @@
         <%= link_to 'Modifier', edit_matter_path(matter), :class => "btn btn-default btn-sm" %></td>
         
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

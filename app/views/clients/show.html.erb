@@ -69,21 +69,35 @@
 <p><%= link_to matter.name, matter_path(matter) %></p>
 <hr>
 <% end %>
+
+<%= simple_form_for(@matter) do |f| %>
+  <%= f.hidden_field :client_id, :value => @client.id %>
+    <div class="form-actions">
+      <%= f.button :submit, "Ajouter un dossier", :class => "pull-right btn-info" %>
+    </div>
+  <% end %>
+
 </div>
 
   <div class="col-md-4">
 <h4 class="page-header text-right">Factures</h4>
 
-<% @client.matters.each do |matter| %>
-  <% matter.invoices.each do |invoice| %>
-<p><%= link_to invoice.invoice_date, invoice_path(invoice) %>
-  <small> (pour le dossier <%= matter.name %>)</small>
-</p>
-<hr>
+  <% @client.matters.each do |matter| %>
+    <% matter.invoices.each do |invoice| %>
+  <p><%= link_to invoice.invoice_date, invoice_path(invoice) %>
+    <small> (pour le dossier <%= matter.name %>)</small>
+  </p>
+  <hr>
+    <% end %>
   <% end %>
-<% end %>
+
+  <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModalInvoice">
+    Ajouter une facture
+  </button>
 
 </div>
+
+
 
 
   <div class="col-md-4">
@@ -97,9 +111,15 @@
 <hr>
   <% end %>
 <% end %>
+
+<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModalPayment">
+    Ajouter un paiement
+  </button>
+
 </div>
 </div>
 
 
 </div>
+<%= render "visitors/modal" %>
 

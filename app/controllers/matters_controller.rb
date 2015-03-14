@@ -7,6 +7,16 @@ class MattersController < ApplicationController
   # GET /matters.json
   def index
     @matters = Matter.all
+    @matter = Matter.new
+
+    @invoices = Invoice.all
+    @invoice = Invoice.new
+
+    @prestations = Prestation.all
+    @prestation = Prestation.new
+
+    @payment = Payment.all
+    @payment = Payment.new
   end
 
   # GET /matters/1

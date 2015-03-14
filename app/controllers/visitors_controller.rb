@@ -10,5 +10,8 @@ class VisitorsController < ApplicationController
 
     	@payments = Payment.all
     	@payment = Payment.new
+
+    	@invoices = Invoice.all
+    	@invoice = Invoice.new
 	end
 end

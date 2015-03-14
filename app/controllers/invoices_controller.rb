@@ -6,6 +6,21 @@ class InvoicesController < ApplicationController
   # GET /invoices.json
   def index
     @invoices = Invoice.order("invoice_duedate ASC")
+    @invoice = Invoice.new
+    
+    @matters = Matter.order("updated_at DESC")
+    @matter = Matter.new
+
+    @clients = Client.order("updated_at DESC")
+
+    @prestations = Prestation.all
+      @prestation = Prestation.new
+
+      @payments = Payment.all
+      @payment = Payment.new
+
+      
+      
   end
 
   # GET /invoices/1
